@@ -1,0 +1,7 @@
+{% extends "base.html" %}
+{%block content%}
+{%set title = "Login"%}
+   <br>
+   <p>Welcome!</p>
+
+{%endblock%}
