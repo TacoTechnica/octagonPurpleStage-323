@@ -35,7 +35,7 @@ def logout():
 
 @website.route( '/login/result', methods = ["POST"])
 def result():
-    user_list = reader.make_dic(reader.read_file("data/users/users.csv"))    
+    user_list = reader.make_dic(reader.read_file("data/users/users.csv"))
     rf = request.form
     user = rf["txt_user"]
     pw = rf["txt_password"]
@@ -68,7 +68,7 @@ def registered():
         return render_template("register.html",error = "Passwords must contain characters AND numbers.",session = session)
     else:
 
-        reader.write_file("data/users/users.csv","\n" + user + "," + pw)
+        reader.write_file("data/users/users.csv",user + "," + pw + "\n")
         return redirect("/")
     
     return render_template("register.html",error = "",session = session)
@@ -76,8 +76,12 @@ def registered():
 #############################################END OF LOGIN#########
 
 ##################USER STUFF######################################
-
-    
+@website.route( '/account/<usr>')
+def account(usr):
+    user_list = reader.make_dic(reader.read_file("data/users/users.csv"))
+    if not usr in user_list.keys():
+        return render_template("error.html",error = "The username you have provided does not exist.")
+    return render_template("account.html",user = usr)
 
 
 if __name__=="__main__":

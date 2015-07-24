@@ -18,7 +18,7 @@ def make_dic(s):#For Usernames and Passwords
 
 #######mode 'w' = write. mode 'a' = append (adds on to text file instead of replacing it).
 def write_file(f,t):
-    f = open(f,'w')
+    f = open(f,'a')
     f.write(t)
     f.close()
 #print w

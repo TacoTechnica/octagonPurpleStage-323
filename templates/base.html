@@ -14,7 +14,7 @@
    <div id="headerUser">
       {% if 'username' in session: %}
        {{session["username"]}}<br>
-       <b><a class="navlink" href="/account/">Account</a></b> <br>
+       <b><a class="navlink" href="/account/{{session["username"]}}">Account</a></b> <br>
        <b><a class="navlink" href="/logout/">Log out</a></b>
       {% else %}
        <b><a class="navlink" href="/login/">Login</a></b>

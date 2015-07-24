@@ -1,0 +1,8 @@
+{% extends "base.html" %}
+{%block content%}
+{%set title = "Login"%}
+   <h1> Uh Oh! </h1>
+   <br>
+   <p>{{error}}</p>
+
+{%endblock%}
