@@ -81,7 +81,7 @@ def account(usr):
     user_list = reader.make_dic(reader.read_file("data/users/users.csv"))
     if not usr in user_list.keys():
         return render_template("error.html",error = "The username you have provided does not exist.")
-    return render_template("account.html",user = usr)
+    return render_template("account.html",user = usr,user_list = user_list)
 
 
 if __name__=="__main__":
