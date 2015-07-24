@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Pickles</title>
+</head>
+{% for p in range(10) %}
+<body>
+<img src="http://farm{{image[p]['farm']}}.staticflickr.com/{{image[p]['server']}}/{{image[p]['id']}}_{{image[p]['secret']}}.jpg">
+{{image[p]['title']}}
+<br><br>
+{% endfor %}
+</body>
+</html>
