@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{%block content%}
+{%set title = "Login"%}
+<form action = "/login/result" method = "POST">
+   Username: <input type = "text" name = "txt_user" > <br>
+   Password:  <input type = "password" name = "txt_password" > <br>
+   <br>
+   <input type = "submit" value = "Login" > <error>{{error}}</error>
+  </form>
+   <br>
+   <p>No account? <a href="/register"> Register here!</a></p>
+
+{%endblock%}

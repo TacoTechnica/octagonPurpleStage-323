@@ -1,0 +1,53 @@
+body{
+ font-family: Helvetica Neue, Helvetica;
+ background-color: #b9cfd4;
+}
+
+error{
+ color: #FF0000;
+}
+
+h1,h2,h3,h4{
+ margin: 0;
+}
+
+#a{
+ width: 80%;
+ margin-left: auto;
+ margin-right: auto;
+}
+
+#header{
+ background-color: #9D2D3C;
+ color: #160600;
+ text-align: center;
+ padding: 10px;
+}
+
+#body{
+ background-color: #DDE4DD;
+ color: #160600;
+ width: 80%;
+ float: right;
+}
+
+#nav{
+ background-color: #BCAB47;
+ color: #6B574B;
+ width: 20%;
+ float: left;
+}
+
+#base{
+ background-color: #160600;
+ color: #946846;
+ width: 80%;
+ margin-left: auto;
+ margin-right: auto;
+ text-align: center;
+}
+
+.navlink{
+ text-decoration: none;
+ color: #ffffff;
+}

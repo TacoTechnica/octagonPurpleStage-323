@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{%block content%}
+  <title> Register </title>
+ </head>
+ <body>
+  <form action = "/register/result/" method = "POST">
+   Username: <input type = "text" name = "txt_user" > <br>
+   Password:  <input type = "password" name = "txt_password" > <br>
+   Password Again:  <input type = "password" name = "txt_password2" > <br>
+   <br>
+   <input type = "submit" value = "Register!" > <error>{{error}}</error>
+  </form>
+{%endblock%}

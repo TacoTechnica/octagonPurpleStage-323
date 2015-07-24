@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <title>{{title}}</title>
+  <link rel="stylesheet" type="text/css" href="/static/style.css">
+ </head>
+ <body>
+  <div id="base">
+   <div id="header">
+    <h1>Octagon Purple Stage</h1>
+   </div>
+   <div id="nav" style="height: {{height}}px;">
+    <ul>
+     
+    </ul>
+    <br><br><br><br><br><br><br><br><br>
+   </div>
+   <div id="body" style="height: {{height}}px;">
+    {% block content %}
+    {% endblock %}
+   </div>
+  </div>
+  <div id="base">
+   <br><br><br><i>Copyright 2015-NaN &copy; Team Capsum</i><br><br>
+  </div>
+ </body>
+</html>
