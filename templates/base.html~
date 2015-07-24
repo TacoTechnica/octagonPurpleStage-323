@@ -1,18 +1,29 @@
 <!DOCTYPE html>
 <html>
  <head>
+  <link rel="shortcut icon" href="../static/img/logo.png">
   <title>OPS: {{title}}</title>
   <link rel="stylesheet" type="text/css" href="/static/style.css">
  </head>
  <body>
   <div id="base">
    <div id="header">
-    <h1>Octagon Purple Stage</h1>
+    <h1> <img src="../static/img/logo.png" alt="OPS" style="width:48px;height:48px;"> Octagon Purple Stage</h1>
    </div>
+
+   <div id="headerUser">
+      {% if 'username' in session: %}
+       {{user}}<br>
+       <b><a class="navlink" href="/account/">Account</a></b> <br>
+       <b><a class="navlink" href="/logout/">Log out</a></b>
+      {% else %}
+       <b><a class="navlink" href="/login/">Login</a></b>
+      {% endif %}
+   </div>
+   
+
    <div id="nav" style="height: {{height}}px;">
-    <ul>
-      
-    </ul>
+
     <br><br><br><br><br><br><br><br><br>
    </div>
    <div id="body" style="height: {{height}}px;">

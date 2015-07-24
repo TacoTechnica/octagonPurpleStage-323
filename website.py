@@ -6,19 +6,21 @@ website=Flask(__name__)
 
 
 
+
 @website.route("/")
 def homepage():
     if not 'username' in session:
+        main_user = ""
         return redirect("login/")
     else:
-        return render_template("homepage.html",height = 400, title = 'OPS - Home',user = ", " + session['username'])
+        return render_template("home.html",height = 400, title = 'OPS - Home',username = ", " + session['username'],session = session)
 
 ##############LOGIN AND ACCOUNTS#################
 
 @website.route( '/login/')
 def login():
     if not 'username' in session:
-        return render_template("login.html",error = "")
+        return render_template("login.html",error = "",session = session)
     else:
         return redirect("/")
 
@@ -27,6 +29,7 @@ def login():
 def logout():
     if 'username' in session:
         session.pop('username', None)
+    main_user = ""
     return redirect("/")
 
 
@@ -40,14 +43,14 @@ def result():
         return render_template("login.html",error = "Both elements must be filled!")
     elif user in user_list.keys() and user_list[user] == pw:
         session['username'] = user
-        print "POTATO: " + session['username']
+        main_user = user
         return redirect("/")
     else:
-        return render_template("login.html",error = "Incorrect username and/or password")
+        return render_template("login.html",error = "Incorrect username and/or password",session = session)
 
 @website.route( '/register/')
 def register():
-    return render_template("register.html",error = "")
+    return render_template("register.html",error = "",session = session)
 
 
 
@@ -58,19 +61,23 @@ def registered():
     pw = rf["txt_password"]
     pw2 = rf["txt_password2"]
     if user == "" or pw == "" or pw2 == "":
-        return render_template("register.html",error = "ALL elements must be filled!")
+        return render_template("register.html",error = "ALL elements must be filled!",session = session)
     elif pw != pw2:
-        return render_template("register.html",error = "Passwords must match")
+        return render_template("register.html",error = "Passwords must match",session = session)
     elif not checker.pwformat(pw):
-        return render_template("register.html",error = "Passwords must contain characters AND numbers.")
+        return render_template("register.html",error = "Passwords must contain characters AND numbers.",session = session)
     else:
 
         reader.write_file("data/users/users.csv","\n" + user + "," + pw)
         return redirect("/")
     
-    return render_template("register.html",error = "")
+    return render_template("register.html",error = "",session = session)
 
+#############################################END OF LOGIN#########
 
+##################USER STUFF######################################
+
+    
 
 
 if __name__=="__main__":

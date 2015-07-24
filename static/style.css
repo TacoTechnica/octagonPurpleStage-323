@@ -18,10 +18,20 @@ h1,h2,h3,h4{
 }
 
 #header{
+ float: left;
+ width: 80%;
  background-color: #9D2D3C;
  color: #160600;
- text-align: center;
- padding: 10px;
+ text-align: left;
+ text-decoration: italic;
+ padding: 2px;
+}
+
+#headerUser{
+ width: 10%
+ background-color:#bcab47;
+ text-align: right;
+ float: left;
 }
 
 #body{
@@ -41,7 +51,7 @@ h1,h2,h3,h4{
 #base{
  background-color: #160600;
  color: #946846;
- width: 80%;
+ width: 90%;
  margin-left: auto;
  margin-right: auto;
  text-align: center;
