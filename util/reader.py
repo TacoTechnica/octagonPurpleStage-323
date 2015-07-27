@@ -32,16 +32,19 @@ def make_postdic(s):
 def get_tags(s):
     result = []
     tag_list = []
-    for i in range(len(s)-1):
-        q = s["tags"]
+    for i in range(len(s)):
+        result.append([])
+        q = s[i]["tags"]
         tag_list = q[ q.find("[u"):q.find("']")+2 ]
-        tag_list.replace("u'","")
-        tag_list.replace("[","")
-        tag_list.replace("]","")
-        tag_list.replace("'","")
+        tag_list = tag_list.replace("u'","")
+        tag_list = tag_list.replace("[","")
+        tag_list = tag_list.replace("]","")
+        tag_list = tag_list.replace("'","")
+        print tag_list
         tag_list = tag_list.split(",")
-        result.append(tag_list) 
-    return tag_list
+        print "Potato: " + str(tag_list)
+        result[i] = (tag_list)
+    return result
 
 
 #######mode 'w' = write. mode 'a' = append (adds on to text file instead of replacing it).
