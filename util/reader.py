@@ -57,6 +57,15 @@ def get_post_by_tag(posts,tag):
     return result
 
 
+
+def get_post_by_user(posts,user):
+    user_post = []
+    for i in posts:
+        if posts[i]["user"] == user:
+            user_post.append(posts[i])
+    return user_post
+
+
 #######mode 'w' = write. mode 'a' = append (adds on to text file instead of replacing it).
 def write_file(f,t):
     f = open(f,'a')

@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {%block content%}
 {%set title = "Posts"%}
-  <h2> Posts! </h2></center>
+  <h2> {{message}} </h2></center>
   <br><br><br>
   <i><h4>Post your own content:</h4></i>
   <form action = "/post/post" method = "POST">
@@ -14,20 +14,21 @@
    <br>
    <input type = "submit" value = "Post!" > 
   </form>
-  <br><br><br>
-
+  <br>
+<b><br> _________________<br></b>
  {% for i in range(dic|length) %}
    <div id = "post_body">
     <div id = "post_header">
-     <center><b> <h3> {{dic[i]["title"]}} </h3> <b>
+     <center><b> <h3> {{dic[dic|length-i - 1]["title"]}} </h3> </b>
     </div>
-    <i>by {{dic[i]["user"]}}</i></center>
-    <br> _________________<br>
-    {{dic[i]["content"]}}
-    <br>_________________<br>
-    Tags: <br><i>
-    {% for j in range(tags[i]|length) %}
-    {{tags[i][j]}} ,
+    <i>by <a href = "/post/user/{{dic[dic|length-i - 1]['user']}}"> {{dic[dic|length-i - 1]["user"]}} </a> </i></center>
+    
+    <div id = "post_text">
+     {{dic[dic|length-i - 1]["content"]}}
+    </div>
+    <b>Tags: </b><i>
+    {% for j in range(tags[dic|length-i - 1]|length) %}
+    <a href = "/post/tag/{{tags[dic|length-i - 1][j]}}" >{{tags[dic|length-i - 1][j]}}</a> ,
     {%endfor%}</i>
     </div>
     <br><br>

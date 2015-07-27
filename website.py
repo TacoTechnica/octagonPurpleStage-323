@@ -101,7 +101,7 @@ def post():
     else:
         post_dic = reader.make_postdic("data/posts/posts.csv")
         #post_dic = checker.reformat(post_dic)
-        return render_template("post.html",dic = post_dic,tags = reader.get_tags(post_dic))
+        return render_template("post.html",dic = post_dic,tags = reader.get_tags(post_dic),message = "All Posts")
 
 @website.route( '/post/post',methods = ["POST"])
 def post_content():
@@ -110,10 +110,31 @@ def post_content():
     reader.write_file(post_dir,rf["title"] + "<,>"+ session["username"] + "<,>" + str(rf["tags"].split(",")) + "<,>" + rf["content"] + "\<end>\n")
     return redirect("/post")
 
+
 @website.route('/post/tag/<tag>')
-def post_by_tag():
+def post_by_tag(tag):
     post_dic = reader.make_postdic("data/posts/posts.csv")
-    #return render_template("post.html",dic = post_dic,tags = reader.get_tags(post_dic))
+    tags = reader.get_post_by_tag(post_dic,tag)
+    post_dic_tags = []
+    for i in tags:
+        post_dic_tags.append(post_dic[tags[i]])
+    return render_template("post.html",dic = post_dic_tags,tags = reader.get_tags(post_dic_tags),message = "Posts by tag: " + tag)
+
+
+@website.route( '/post/user/<usr>')
+def post_by_user(usr):
+    user_list = reader.make_dic(reader.read_file("data/users/user_auth.csv"))
+    if not usr in user_list.keys():
+        return render_template("error.html",error = "The username you have provided does not exist.")
+
+    post_dic = reader.make_postdic("data/posts/posts.csv")
+    post_dic_user = reader.get_post_by_user(post_dic,usr)
+
+    return render_template("post.html",dic = post_dic_user,tags = reader.get_tags(post_dic_user),message = "Posts by " + usr)
+
+
+
+
 
 if __name__=="__main__":
     
