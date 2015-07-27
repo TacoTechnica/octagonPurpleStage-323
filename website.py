@@ -107,8 +107,13 @@ def post():
 def post_content():
     post_dir = "data/posts/posts.csv"
     rf = request.form
-    reader.write_file(post_dir,rf["title"] + ","+ session["username"] + "," + str(rf["tags"].split(",")) + "," + rf["content"] + "\<end>\n")
+    reader.write_file(post_dir,rf["title"] + "<,>"+ session["username"] + "<,>" + str(rf["tags"].split(",")) + "<,>" + rf["content"] + "\<end>\n")
     return redirect("/post")
+
+@website.route('/post/tag/<tag>')
+def post_by_tag():
+    post_dic = reader.make_postdic("data/posts/posts.csv")
+    #return render_template("post.html",dic = post_dic,tags = reader.get_tags(post_dic))
 
 if __name__=="__main__":
     

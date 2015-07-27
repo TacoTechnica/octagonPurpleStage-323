@@ -92,6 +92,7 @@ h1,h2,h3,h4{
 }
 
 #post{
+ padding: 5px;
  background-color: #8A96B5;
  color: #FFFFFF;
  width: 256px;

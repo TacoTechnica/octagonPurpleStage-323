@@ -25,8 +25,8 @@ def make_postdic(s):
     for i in range(len(q)-1):
         tag_list = q[i][ q[i].find("[u"):q[i].find("']")+2 ]
         q[i] = q[i].replace("," + tag_list,"")
-        w = q[i].split(",")
-        result[i] = {"title":w[0],"user":w[1],"tags":tag_list,"content":w[2]}
+        w = q[i].split("<,>")
+        result[i] = {"title":w[0],"user":w[1],"tags":tag_list,"content":w[3]}
     return result
 
 def get_tags(s):
@@ -44,6 +44,15 @@ def get_tags(s):
         tag_list = tag_list.split(",")
         print "Potato: " + str(tag_list)
         result[i] = (tag_list)
+    return result
+
+def get_post_by_tag(posts,tag):
+    result = []
+    tag_list = get_tags(posts)
+    for i in range(len(tag_list)):
+        for j in tag_list[i]:
+            if j == tag:
+                result.append(i)
     return result
 
 
