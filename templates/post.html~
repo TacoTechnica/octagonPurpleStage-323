@@ -18,8 +18,8 @@
 
  {% for i in range(dic|length) %}
    <div id = "post">
-    <center><b> <h3> {{dic[i]["title"]}} </h3> <b></center>
-    <i>by {{dic[i]["user"]}}</i>
+    <center><b> <h3> {{dic[i]["title"]}} </h3> <b>
+    <i>by {{dic[i]["user"]}}</i></center>
     <br> _________________<br>
     {{dic[i]["content"]}}
     <br>_________________<br>

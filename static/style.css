@@ -93,14 +93,15 @@ h1,h2,h3,h4{
 
 #post_body{
  padding: 5px;
- background-color: #8A96B5;
- color: #FFFFFF;
+ /*background-color: #8A96B5;*/
+ background-color: #CEDAF9;
+ color: #111111;
  width: 256px;
 
 }
 #post_header{
  padding: 10px;
- background-color: #8A96B5;
+ background-color: #8A96F5;
 }
 
 .resizedField {/*width: 300px; height: 200px; padding:10px 0;*/}

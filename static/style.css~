@@ -91,12 +91,17 @@ h1,h2,h3,h4{
  /*text-align: center;*/
 }
 
-#post{
+#post_body{
  padding: 5px;
- background-color: #8A96B5;
+ /*background-color: #8A96B5;*/
+ background-color: #CEDAF9;
  color: #FFFFFF;
  width: 256px;
 
+}
+#post_header{
+ padding: 10px;
+ background-color: #8A96F5;
 }
 
 .resizedField {/*width: 300px; height: 200px; padding:10px 0;*/}
