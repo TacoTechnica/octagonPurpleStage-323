@@ -1,0 +1,7 @@
+{% extends "base.html" %}
+{%block content%}
+{%set title = "About"%}
+   <br>
+   <p>Octagon Purple Stage is an online social service delivered to you by a group of students learning web development at CSTUY, held at SJC.</p>
+
+{%endblock%}

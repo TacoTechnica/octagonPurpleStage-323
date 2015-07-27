@@ -2,6 +2,7 @@
 {%block content%}
 {%set title = "Login"%}
 <form action = "/login/result" method = "POST">
+  <center>
    Username: <input type = "text" name = "txt_user" > <br>
    Password:  <input type = "password" name = "txt_password" > <br>
    <br>
@@ -9,5 +10,5 @@
   </form>
    <br>
    <p>No account? <a href="/register"> Register here!</a></p>
-
+ </center>
 {%endblock%}

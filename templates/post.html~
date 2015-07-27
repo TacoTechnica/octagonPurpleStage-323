@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{%block content%}
+{%set title = "Posts"%}
+  <h2> Posts! </h2></center>
+  <br><br><br>
+  <i><h4>Post your own content:</h4></i>
+  <form action = "/post/post" method = "POST">
+  
+   Title: <br><input type = "text" name = "txt_title" > <br>
+   Contents:<br>  <input type = "text" name = "txt_content"  rows="4" cols="50" > <br>
+   
+   <br>
+   <input type = "submit" value = "Login" > <error>{{error}}</error>
+  </form>
+{%endblock%}

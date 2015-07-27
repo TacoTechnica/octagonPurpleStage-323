@@ -78,7 +78,7 @@ def registered():
     
     return render_template("register.html",error = "",session = session)
 
-#############################################END OF LOGIN#########
+#############################################end of LOGIN#########
 
 ##################USER STUFF######################################
 @website.route( '/account/<usr>')
@@ -87,6 +87,16 @@ def account(usr):
     if not usr in user_list.keys():
         return render_template("error.html",error = "The username you have provided does not exist.")
     return render_template("account.html",user = usr,user_list = user_list)
+
+##################end of USER STUFF###############################
+@website.route('/about')
+def about():
+    return render_template("about.html")
+
+@website.route( '/post')
+def post():
+    return render_template("post.html")
+
 
 
 if __name__=="__main__":

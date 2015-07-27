@@ -2,13 +2,16 @@
 <html>
  <head>
   <link rel="shortcut icon" href="../static/img/logo.png">
-  <title>OPS: {{title}}</title>
+  
   <link rel="stylesheet" type="text/css" href="/static/style.css">
  </head>
  <body>
   <div id="base">
    <div id="header">
     <h1> <img src="../static/img/logo.png" alt="OPS" style="width:48px;height:48px;"> Octagon Purple Stage</h1>
+    <a class="button" href="/">Home</a>
+    <a class="button" href="/post">Posts</a>
+    <a class="button" href="/about">About</a>
    </div>
 
    <div id="headerUser">
@@ -23,13 +26,14 @@
    
 
    <div id="nav" style="height: {{height}}px;">
-    <b><a class="navlink" href="/">Home</a><b>
+    
     <br><br><br><br><br><br><br><br><br>
    </div>
    <div id="body" style="height: {{height}}px;">
     {% block content %}
     {% endblock %}
-   </div>
+    <title>OPS: {{title}}</title>  
+ </div>
   </div>
   <div id="base">
    <br><br><br><i>Copyright 2015-NaN &copy; Team Capsum. We will sue.</i><br><br>
