@@ -2,7 +2,7 @@
 <html>
  <head>
   <link rel="shortcut icon" href="../static/img/logo.png">
-  
+  <title>OPS: {{title}}</title>
   <link rel="stylesheet" type="text/css" href="/static/style.css">
  </head>
  <body>
@@ -32,8 +32,7 @@
    <div id="body" style="height: {{height}}px;">
     {% block content %}
     {% endblock %}
-    <title>OPS: {{title}}</title>  
- </div>
+   </div>
   </div>
   <div id="base">
    <br><br><br><i>Copyright 2015-NaN &copy; Team Capsum. We will sue.</i><br><br>

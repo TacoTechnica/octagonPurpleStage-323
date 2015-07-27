@@ -7,7 +7,7 @@
   <form action = "/post/post" method = "POST">
   
    Title: <br><input type = "text" name = "txt_title" > <br>
-   Contents:<br>  <input type = "text" name = "txt_content"  rows="4" cols="50" > <br>
+   Contents:<br> <textarea name="txt_content" style="width:250px;height:150px;"></textarea> <br>
    
    <br>
    <input type = "submit" value = "Login" > <error>{{error}}</error>

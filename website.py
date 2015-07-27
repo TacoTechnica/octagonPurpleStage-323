@@ -95,7 +95,11 @@ def about():
 
 @website.route( '/post')
 def post():
-    return render_template("post.html")
+    if not 'username' in session:
+        main_user = ""
+        return redirect("login/")
+    else:
+        return render_template("post.html")
 
 
 
