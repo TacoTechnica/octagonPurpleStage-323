@@ -46,7 +46,7 @@ h1,h2,h3,h4{
 #header{
  float: left;
  width: 80%;
- background-color: #9D2D3C;
+ background-color: #811A68;
  color: #160600;
  text-align: left;
  text-decoration: italic;
@@ -61,21 +61,21 @@ h1,h2,h3,h4{
 }
 
 #body{
- background-color: #DDE4DD;
+ background-color: #A182A4;
  color: #160600;
  width: 80%;
  float: right;
 }
 
 #nav{
- background-color: #BCAB47;
+ background-color: #8A96B5;
  color: #6B574B;
  width: 20%;
  float: left;
 }
 
 #base{
- background-color: #160600;
+ background-color: #924F7C;
  color: #946846;
  width: 90%;
  margin-left: auto;
