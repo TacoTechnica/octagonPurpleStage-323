@@ -36,6 +36,9 @@ def logout():
 @website.route( '/login/result', methods = ["POST"])
 def result():
     user_list = reader.make_dic(reader.read_file("data/users/user_auth.csv"))
+    #print "BEFORE: " + str(user_list)
+    user_list = checker.reformat(user_list)
+    #print "AFTER: " + str(user_list)
     rf = request.form
     user = rf["txt_user"]
     pw = rf["txt_password"]

@@ -9,3 +9,8 @@ def pwformat(t):
         if "a" <= i.lower() and i.upper() <= "z":
             char = True
     return num and char
+
+def reformat(dic):
+    for i in dic.keys():
+        dic[i] = dic[i].replace("\r","")
+    return dic
