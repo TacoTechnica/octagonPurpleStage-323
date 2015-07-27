@@ -67,10 +67,10 @@ def registered():
         return render_template("register.html",error = "Passwords must match",session = session)
     elif not checker.pwformat(pw):
         return render_template("register.html",error = "Passwords must contain characters AND numbers.",session = session)
-    elif: user in user_list.keys():
+    elif user in user_list.keys():
         return render_template("register.html",error = "Username already exists.",session = session)
     else:
-        reader.write_file("data/users/users.csv",user + "," + pw"\n")
+        reader.write_file("data/users/user_auth.csv",user + "," + pw + "\n")
         return redirect("/")
     
     return render_template("register.html",error = "",session = session)
@@ -80,7 +80,7 @@ def registered():
 ##################USER STUFF######################################
 @website.route( '/account/<usr>')
 def account(usr):
-    user_list = reader.make_dic(reader.read_file("data/users/users.csv"))
+    user_list = reader.make_dic(reader.read_file("data/users/user_auth.csv"))
     if not usr in user_list.keys():
         return render_template("error.html",error = "The username you have provided does not exist.")
     return render_template("account.html",user = usr,user_list = user_list)

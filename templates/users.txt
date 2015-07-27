@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{%block content%}
+{%set title = "Login"%}
+ <h2> User List with Friends <h2>
+ {% for i in dic.keys() %}
+  :{{i}}: 
+  {% for j in dic[i] %}
+    j,
+  {% endfor %}
+  <br>
+ {% endfor %}
+{%endblock%}
