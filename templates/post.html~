@@ -6,10 +6,27 @@
   <i><h4>Post your own content:</h4></i>
   <form action = "/post/post" method = "POST">
   
-   Title: <br><input type = "text" name = "txt_title" > <br>
-   Contents:<br> <textarea name="txt_content" style="width:250px;height:150px;"></textarea> <br>
+   Title: <br><input type = "text" name = "title" > <br>
+   Contents:<br> <textarea name="content" style="width:250px;height:150px;"></textarea> <br>
+   <br>
+   Tags (Separate by Commas): <br><input type = "text" name = "tags" > <br>
    
    <br>
-   <input type = "submit" value = "Login" > <error>{{error}}</error>
+   <input type = "submit" value = "Post!" > 
   </form>
+  <br><br><br>
+
+ {% for i in range(dic|length) %}
+   <div id = "post">
+    <b> <h3> {{dic[i]["title"]}} </h3> <b>
+    <i>by {{dic[i]["user"]}}</i>
+    <br> _________________<br>
+    {{dic[i]["content"]}}
+    <br><br>
+    Tags: <br>
+   <i>{{tags[j]}}
+   </div>
+   <br><br>
+ {%endfor%}
+
 {%endblock%}

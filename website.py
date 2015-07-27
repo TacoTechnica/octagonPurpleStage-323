@@ -93,15 +93,22 @@ def account(usr):
 def about():
     return render_template("about.html")
 
-@website.route( '/post')
+@website.route( '/post/')
 def post():
     if not 'username' in session:
         main_user = ""
         return redirect("login/")
     else:
-        return render_template("post.html")
+        post_dic = reader.make_postdic("data/posts/posts.csv")
+        #post_dic = checker.reformat(post_dic)
+        return render_template("post.html",dic = post_dic,tags = reader.get_tags(post_dic))
 
-
+@website.route( '/post/post',methods = ["POST"])
+def post_content():
+    post_dir = "data/posts/posts.csv"
+    rf = request.form
+    reader.write_file(post_dir,rf["title"] + ","+ session["username"] + "," + str(rf["tags"].split(",")) + "," + rf["content"] + "\<end>\n")
+    return redirect("/post")
 
 if __name__=="__main__":
     

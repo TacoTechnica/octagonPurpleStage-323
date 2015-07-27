@@ -76,7 +76,7 @@ h1,h2,h3,h4{
 
 #base{
  background-color: #924F7C;
- color: #946846;
+ color: #000000;
  width: 90%;
  margin-left: auto;
  margin-right: auto;
@@ -90,7 +90,15 @@ h1,h2,h3,h4{
  margin-right: auto;
  /*text-align: center;*/
 }
-.resizedField {width: 300px; height: 200px; padding:10px 0;}
+
+#post{
+ background-color: #8A96B5;
+ color: #FFFFFF;
+ width: 256px;
+
+}
+
+.resizedField {/*width: 300px; height: 200px; padding:10px 0;*/}
 
 .navlink{
  
