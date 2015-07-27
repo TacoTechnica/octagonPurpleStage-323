@@ -30,8 +30,8 @@ h1,h2,h3,h4{
 #headerUser{
  width: 10%
  background-color:#bcab47;
- text-align: center;
- float: right;
+ text-align: right;
+ float: left;
 }
 
 #body{
