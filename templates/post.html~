@@ -18,6 +18,7 @@
 
 <b><br> _________________<br></b>
  {% for i in range(dic|length) %}
+   <a name="post{{i}}"></a> 
    <div id = "post_body">
     <div id = "post_header">
      <center><b> <h3> {{dic[dic|length-i - 1]["title"]}} </h3> </b>
@@ -36,9 +37,11 @@
     
     {% for j in dic[dic|length-i - 1]["replies"] %}
      <div id = "post_reply">
-      <i>by <a href = "/post/user/{{j[1]}}"> {{j[1]}} </a> :</i> <br> {{j[0]}} <br> ________________ <br>
+      <i>by <a href = "/post/user/{{j[1]}}"> {{j[1]}} </a> :</i> <br> {{j[0]}} <br> ________________ 
      </div>
-    {% endfor %}
+      <br>
+     {% endfor %}
+    
 
     <form action = "/post/reply/{{dic|length-i - 1}}" method = "POST">
      <textarea name = "reply" style="width:200px;height:60px;"></textarea>
