@@ -15,6 +15,7 @@
    <input type = "submit" value = "Post!" > 
   </form>
   <br>
+
 <b><br> _________________<br></b>
  {% for i in range(dic|length) %}
    <div id = "post_body">
@@ -22,7 +23,7 @@
      <center><b> <h3> {{dic[dic|length-i - 1]["title"]}} </h3> </b>
     </div>
     <i>by <a href = "/post/user/{{dic[dic|length-i - 1]['user']}}"> {{dic[dic|length-i - 1]["user"]}} </a> </i></center>
-    
+
     <div id = "post_text">
      {{dic[dic|length-i - 1]["content"]}}
     </div>
@@ -30,6 +31,16 @@
     {% for j in range(tags[dic|length-i - 1]|length) %}
     <a href = "/post/tag/{{tags[dic|length-i - 1][j]}}" >{{tags[dic|length-i - 1][j]}}</a> ,
     {%endfor%}</i>
+    <br>
+    {% for j in dic[dic|length-i - 1]["replies"] %}
+     <i>{{j[1]}} :</i> <br> {{j[0]}} <br> ________________ <br>
+    {% endfor %}
+
+    <form action = "/post/reply/{{dic|length-i - 1}}" method = "POST">
+     <textarea name = "reply" style="width:200px;height:60px;"></textarea>
+     <input type = "submit" value = "Reply" >
+    </form>
+
     </div>
     <br><br>
  {%endfor%}

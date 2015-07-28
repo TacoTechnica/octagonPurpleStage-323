@@ -26,7 +26,13 @@ def make_postdic(s):
         tag_list = q[i][ q[i].find("[u"):q[i].find("']")+2 ]
         q[i] = q[i].replace("<,>" + tag_list,"")
         w = q[i].split("<,>")
-        result[i] = {"title":w[0],"user":w[1],"tags":tag_list,"content":w[2]}
+
+        #print "w[3] = " + str(w[3])
+        reply_list = w[3].split("{{,}}")[:-1] #Ignores last one.
+        for i in range(len(reply_list)):
+            reply_list[i] = reply_list[i].split("{,}") #This seperates comment and user.
+        print "POTATOES " + str(reply_list)
+        result[i] = {"title":w[0],"user":w[1],"tags":tag_list,"content":w[2],"replies":reply_list}
     return result
 
 def get_tags(s):
@@ -40,10 +46,10 @@ def get_tags(s):
         tag_list = tag_list.replace("[","")
         tag_list = tag_list.replace("]","")
         tag_list = tag_list.replace("'","")
-        print tag_list
+        #print tag_list
         tag_list = tag_list.replace(" ","")
         tag_list = tag_list.split(",")
-        print "Potato: " + str(tag_list)
+        #print "Potato: " + str(tag_list)
         result[i] = (tag_list)
     return result
 
@@ -66,9 +72,24 @@ def get_post_by_user(posts,user):
     return user_post
 
 
+#################TEXT WORKING####################
+def string_at(index,string,text):
+    for i in range(len(string)):
+        if i+index > len(text):
+            return False
+        if text[i+index] != string[i]:
+            return False
+    return True
+
+
 #######mode 'w' = write. mode 'a' = append (adds on to text file instead of replacing it).
 def write_file(f,t):
     f = open(f,'a')
     f.write(t)
     f.close()
-#print w
+
+def replace_file(f,t):
+    f = open(f,'w')
+    f.write(t)
+    f.close()
+

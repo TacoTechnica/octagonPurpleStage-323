@@ -93,6 +93,8 @@ def account(usr):
 def about():
     return render_template("about.html")
 
+
+###################POSTING AND REPLYING#############################
 @website.route( '/post/')
 def post():
     if not 'username' in session:
@@ -107,7 +109,7 @@ def post():
 def post_content():
     post_dir = "data/posts/posts.csv"
     rf = request.form
-    reader.write_file(post_dir,rf["title"] + "<,>"+ session["username"] + "<,>" + str(rf["tags"].split(",")) + "<,>" + rf["content"] + "\<end>\n")
+    reader.write_file(post_dir,rf["title"] + "<,>"+ session["username"] + "<,>" + str(rf["tags"].split(",")) + "<,>" + rf["content"] + "<,>" + "\<end>\n")
     return redirect("/post")
 
 
@@ -132,8 +134,24 @@ def post_by_user(usr):
 
     return render_template("post.html",dic = post_dic_user,tags = reader.get_tags(post_dic_user),message = "Posts by " + usr)
 
+@website.route('/post/reply/<index>', methods = ["POST"])
+def post_reply(index,methods = ["POST"]):
+    directory = "data/posts/posts.csv"
+    reply = request.form["reply"]
+    #post_dic = reader.make_postdic("data/posts/posts.csv")
+    text = reader.read_file(directory)
 
-
+    i=2
+    count = 0
+    while (count < index and i < len(text)):
+        if reader.string_at(i,"/<end>\n",text):
+            count+=1
+        i+=1
+    i -= 7 #8 is the length of string "/<end>\n"
+    text = text[:i] + reply + "{,}" + session["username"] + "{{,}}" + text[i:]
+    reader.replace_file(directory,text)
+    return redirect("/post")
+###################end of POSTING AND REPLYING#############################
 
 
 if __name__=="__main__":

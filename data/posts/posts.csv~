@@ -1,2 +1,2 @@
-title,user,[u'tag1', u'tag2'],content\<end>
-This is a Post!,user,[u'post', u'nonsense'],So one day, I made a post. WOnderful!\<end>
+Title<,>user<,>[u'tag1', u'tag2']<,>Stuff goes here<,>\<end>
+Potato<,>user<,>[u'tag2']<,>Man<,>REPLY{,}user<<,>>YUNOREPLY{,}user<<,>>\<end>
