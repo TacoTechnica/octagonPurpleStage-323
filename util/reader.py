@@ -21,7 +21,7 @@ def make_dic(s):#For Usernames and Passwords
 def make_postdic(s):
     s = read_file(s)
     q = s.split("\<end>\n")
-    result = {}
+    result = []
     for i in range(len(q)-1):
         tag_list = q[i][ q[i].find("[u"):q[i].find("']")+2 ]
         q[i] = q[i].replace("<,>" + tag_list,"")
@@ -31,8 +31,10 @@ def make_postdic(s):
         reply_list = w[3].split("{{,}}")[:-1] #Ignores last one.
         for i in range(len(reply_list)):
             reply_list[i] = reply_list[i].split("{,}") #This seperates comment and user.
-        print "POTATOES " + str(reply_list)
-        result[i] = {"title":w[0],"user":w[1],"tags":tag_list,"content":w[2],"replies":reply_list}
+        #print "POTATOES " + str(reply_list)
+        #result[i] = {"title":w[0],"user":w[1],"tags":tag_list,"content":w[2],"replies":reply_list}
+        result.append( {"title":w[0],"user":w[1],"tags":tag_list,"content":w[2],"replies":reply_list} )
+    print "RESULT: " + str(result)
     return result
 
 def get_tags(s):

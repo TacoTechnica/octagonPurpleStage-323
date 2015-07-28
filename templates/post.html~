@@ -32,8 +32,12 @@
     <a href = "/post/tag/{{tags[dic|length-i - 1][j]}}" >{{tags[dic|length-i - 1][j]}}</a> ,
     {%endfor%}</i>
     <br>
-    {% for j in dic["replies"] %}
-     <i>{{j[1]}} :</i> <br> {{j[0]}} <br> ________________ <br>
+
+    
+    {% for j in dic[dic|length-i - 1]["replies"] %}
+     <div id = "post_reply">
+      <i>by <a href = "/post/user/{{j[1]}}"> {{j[1]}} </a> :</i> <br> {{j[0]}} <br> ________________ <br>
+     </div>
     {% endfor %}
 
     <form action = "/post/reply/{{dic|length-i - 1}}" method = "POST">

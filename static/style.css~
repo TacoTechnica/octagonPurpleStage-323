@@ -96,7 +96,7 @@ h1,h2,h3,h4{
  /*background-color: #8A96B5;*/
  background-color: #CEDAF9;
  color: #111111;
- width: 256px;
+ width: 312px;
 }
 
 #post_header{
@@ -106,9 +106,15 @@ h1,h2,h3,h4{
 
 
 #post_text{
- font-size: 16px;
- padding: 1px;
- background-color: #BDC9F8;
+ font-size: 20px;
+ padding: 5px;
+ min-height: 100px;
+ background-color: #EFFCFB;
+}
+
+#post_reply{
+ padding: 3px;
+ background-color: #FFC9C8;
 }
 
 .resizedField {/*width: 300px; height: 200px; padding:10px 0;*/}
