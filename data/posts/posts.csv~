@@ -1,2 +1,3 @@
-Title<,>user<,>[u'potato']<,>Potato<,>No way!{,}user{{,}}Yeah way!{,}user{{,}}\<end>
-You know what's funny?<,>user<,>[u'funny']<,>Nothing!<,>\<end>
+a<,>user<,>[u'a']<,>a<,>ATE{,}user{{,}}\<end>
+b<,>user<,>[u'b']<,>b<,>BEE{,}user{{,}}\<end>
+c<,>user<,>[u'c']<,>c<,>CAT{,}user{{,}}ACA{,}user{{,}}aSDasDAS{,}user{{,}}DUCKING FINALLTY!{,}user{{,}}\<end>

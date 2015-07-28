@@ -135,19 +135,28 @@ def post_by_user(usr):
     return render_template("post.html",dic = post_dic_user,tags = reader.get_tags(post_dic_user),message = "Posts by " + usr)
 
 @website.route('/post/reply/<index>', methods = ["POST"])
-def post_reply(index,methods = ["POST"]):
+def post_reply(index):
     directory = "data/posts/posts.csv"
     reply = request.form["reply"]
     #post_dic = reader.make_postdic("data/posts/posts.csv")
     text = reader.read_file(directory)
 
-    i=2
+
+    i = 1
     count = 0
-    while (count < index and i < len(text)):
-        if reader.string_at(i,"/<end>\n",text):
+    
+    while ((count <= int(index)) and (i < len(text))):
+        if reader.string_at(i,"\\<end>\n",text):
             count+=1
+            
         i+=1
-    i -= 7 #8 is the length of string "/<end>\n"
+    #if count != 0:
+    #    print "WAHT THAS IASJDSOJHAMNIK"
+    #    i-=1
+
+
+
+    i -= 1 #8 is the length of string "/<end>\n"
     text = text[:i] + reply + "{,}" + session["username"] + "{{,}}" + text[i:]
     reader.replace_file(directory,text)
     return redirect("/post")

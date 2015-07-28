@@ -34,7 +34,7 @@ def make_postdic(s):
         #print "POTATOES " + str(reply_list)
         #result[i] = {"title":w[0],"user":w[1],"tags":tag_list,"content":w[2],"replies":reply_list}
         result.append( {"title":w[0],"user":w[1],"tags":tag_list,"content":w[2],"replies":reply_list} )
-    print "RESULT: " + str(result)
+    #print "RESULT: " + str(result)
     return result
 
 def get_tags(s):
@@ -67,8 +67,9 @@ def get_post_by_tag(posts,tag):
 
 
 def get_post_by_user(posts,user):
+    #print "POTATO POST: " + str(posts)
     user_post = []
-    for i in posts:
+    for i in range(len(posts)):
         if posts[i]["user"] == user:
             user_post.append(posts[i])
     return user_post
