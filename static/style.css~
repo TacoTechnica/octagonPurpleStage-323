@@ -79,7 +79,6 @@ h1,h2,h3,h4{
 
 #base{
  background-color: #924F7C;
-
  color: #000000;
  width: 90%;
  height: 100%;
@@ -121,6 +120,11 @@ h1,h2,h3,h4{
 
 #post_reply{
  padding: 3px;
+ background-color: #AAC9C8;
+}
+
+#message_body{
+ padding: 8px;
  background-color: #AAC9C8;
 }
 

@@ -123,6 +123,13 @@ h1,h2,h3,h4{
  background-color: #AAC9C8;
 }
 
+#message_body{
+ padding: 8px;
+ background-color: #AAC9C8;
+ min-height: 75px;
+ width: 500px;
+}
+
 .resizedField {/*width: 300px; height: 200px; padding:10px 0;*/}
 
 img{

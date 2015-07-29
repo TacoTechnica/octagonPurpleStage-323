@@ -11,6 +11,7 @@
     <h1> <img src="../static/img/logo.png" alt="OPS" style="width:48px;height:48px;"> Octagon Purple Stage</h1>
     <a class="button" href="/tags">Tags</a>
     <a class="button" href="/post">Posts</a>
+    <a class="button" href="/messages">Messages</a>
     <a class="button" href="/about">About</a>
    </div>
 
@@ -35,7 +36,7 @@
     {% endblock %}
    </div>
   
-   <div id="footer">
+   <div id="base">
     <br><br><br><i>Copyright 2015-NaN &copy; Team Capsum. We will sue.</i><br><br>
    </div>
   </div>

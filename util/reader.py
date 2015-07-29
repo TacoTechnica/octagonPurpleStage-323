@@ -89,6 +89,32 @@ def get_post_by_user(posts,user):
     return user_post
 
 
+def make_messagelist(text):
+    result = []
+    text = read_file(text)
+    s = text.split("/<end>\n")
+    for i in s[:-1]:
+        i = i.split("<,>")
+        result.append({'user':i[0],'sender':i[1],'content':i[2],'read':i[3]})
+    return result
+
+def get_message_by_user(user,messages):
+    result = []
+    for i in messages:
+        if i['user'] == user:
+            result.append(i)
+    return result
+
+def get_unread_count(messages):
+    messages = make_messagelist(messages)
+    result = 0
+    for i in messages:
+        if i['read'] == "False":
+            result+=1
+    return result
+
+
+
 #################TEXT WORKING####################
 def string_at(index,string,text):
     for i in range(len(string)):

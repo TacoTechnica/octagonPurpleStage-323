@@ -5,6 +5,7 @@ from util import reader,checker
 website=Flask(__name__)
 
 
+undread_number = reader.get_unread_count("data/users/messages.csv")
 
 
 @website.route("/")
@@ -188,6 +189,24 @@ def post_reply(index):
 ###################end of POSTING AND REPLYING#############################
 
 
+######################MESSAGES#########################
+@website.route('/messages/')
+def messages():
+    url = "data/users/messages.csv"
+    text = reader.read_file(url)
+    text = text.replace("<,>False<,>","<,>True<,>")
+    
+    message_list = reader.make_messagelist(url)
+    messages = reader.get_message_by_user(session['username'],message_list)
+    print "MESSAGES: " + str(messages)
+    return render_template("messages.html",messages = messages)
+
+@website.route('/messages/send', methods = ["POST"])
+def messages_send():
+    rf = request.form
+    url = "data/users/messages.csv" # IMAGES ARE BLECH.
+    reader.write_file(url,rf["user"] + "<,>" + session["username"] + "<,>" + rf["content"] + "<,>" + "False" + "<,>" + "/<end>\n")#+ rf["images"] + ","
+    return redirect("/messages")
 
 ##########ERROR SITE #######################
 @website.route('/<error>')
