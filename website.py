@@ -80,7 +80,7 @@ def registered():
     elif user in user_list.keys():
         return render_template("register.html",error = "Username already exists.",session = session)
     else:
-        reader.write_file("data/users/user_auth.csv",user + "," + pw +  "," + "\n")
+        reader.write_file("data/users/user_auth.csv",user + "," + pw +  "," + "..static/img/default.png" + "\n")
         return redirect("/")
     
     return render_template("register.html",error = "",session = session)
@@ -100,11 +100,14 @@ def account_change_profile_img():
     directory = "data/users/user_auth.csv"
     url = request.form["image"]
     text = reader.read_file(directory)
-    index = text[text.find(session['username']):].find("\n")
+    index = text[( text.find(session['username']) ):].find("\n")
+    print "TEXT AFTER USERNAME: " + str(text[( text.find(session['username']) ):]) #works
+    print "TEXT UNTIL NEWLINE: " + str(text[( text.find(session['username']) ):index]) #works
     i = 0
     while(text[index - i] != ","): #From the end of the user line, it goes down until it finds a comma.
         i+=1
-    text = text[(index-i):] + url + text[:(index)]
+    print "TEXT OF IMAGE: " + str(text[index-i:index])
+    text = text[:(index-i)] + "," + url + text[(index):]
     reader.replace_file(directory,text)
     return redirect("/")
 ##################end of USER STUFF###############################
@@ -199,3 +202,6 @@ if __name__=="__main__":
     #sess.init_app(website)
     website.debug=True
     website.run(host="0.0.0.0",port=5000)
+    
+    #session["user_auth"] = reader.make_dic(reader.read_file("data/users/user_auth.csv"))
+    #print "THING: " + str(session["user_auth"])

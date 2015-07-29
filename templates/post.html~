@@ -28,7 +28,7 @@
 
     <div id = "post_text">
      {{dic[dic|length-i - 1]["content"]}} <br>
-     {%if not dic[dic|length-i - 1]["images"][0] is "" %}
+     {%if not dic[dic|length-i - 1]["images"][0] == "" %}
       {%for j in dic[dic|length-i - 1]["images"] %}
        <img src= {{j}} >
       {%endfor%}

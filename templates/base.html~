@@ -9,7 +9,7 @@
   <div id="base">
    <div id="header">
     <h1> <img src="../static/img/logo.png" alt="OPS" style="width:48px;height:48px;"> Octagon Purple Stage</h1>
-    <a class="button" href="/">Tags</a>
+    <a class="button" href="/tags">Tags</a>
     <a class="button" href="/post">Posts</a>
     <a class="button" href="/about">About</a>
    </div>
@@ -17,6 +17,7 @@
    <div id="headerUser">
       {% if 'username' in session: %}
        {{session["username"]}}<br>
+
        <b><a class="navlink" href="/account/{{session["username"]}}">Account</a></b> <br>
        <b><a class="navlink" href="/logout/">Log out</a></b>
       {% else %}
@@ -34,7 +35,7 @@
     {% endblock %}
    </div>
   
-   <div id="base">
+   <div id="footer">
     <br><br><br><i>Copyright 2015-NaN &copy; Team Capsum. We will sue.</i><br><br>
    </div>
   </div>

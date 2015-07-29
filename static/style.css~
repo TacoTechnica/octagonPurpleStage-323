@@ -1,4 +1,6 @@
 body{
+ background-image: url('img/bk2.png');
+ background-repeat: repeat;
  font-family: Helvetica Neue, Helvetica;
  background-color: #b9cfd4;
 }
@@ -61,7 +63,7 @@ h1,h2,h3,h4{
 }
 
 #body{
- min-height: 200px;
+ min-height: 400px;
  background-color: #A182A4;
  color: #160600;
  width: 80%;
@@ -77,6 +79,7 @@ h1,h2,h3,h4{
 
 #base{
  background-color: #924F7C;
+
  color: #000000;
  width: 90%;
  height: 100%;
@@ -122,6 +125,12 @@ h1,h2,h3,h4{
 }
 
 .resizedField {/*width: 300px; height: 200px; padding:10px 0;*/}
+
+img{
+ max-width:200px;
+ max-height:200px;
+}
+
 
 .navlink{
  
