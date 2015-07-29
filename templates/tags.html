@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{%block content%}
+{%set title = "Tags"%}
+   <h1> List of Current Tags: </h1>
+   <br>
+   <b>
+   <center>
+    {%for i in tags %}
+     <a href = "/post/tag/{{i}}"> {{i}} </a> <br>
+    {%endfor%}
+   </b>
+   </center>
+{%endblock%}
