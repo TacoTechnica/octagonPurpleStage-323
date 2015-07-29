@@ -88,8 +88,8 @@ h1,h2,h3,h4{
  /*text-align: center;*/
 }
 #footer{
- position:absolute;
- bottom:0;
+ /*position:absolute;
+ bottom:0;*/
  background-color: #160600;
  color: #946846;
  width: 90%;

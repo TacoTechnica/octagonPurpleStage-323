@@ -77,7 +77,7 @@ def get_post_by_tag(posts,tag):
             if j == tag:
                 result.append(i)
     return result
-
+a
 
 
 def get_post_by_user(posts,user):
