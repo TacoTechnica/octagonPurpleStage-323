@@ -11,10 +11,17 @@ website=Flask(__name__)
 def homepage():
     if not 'username' in session:
         main_user = ""
-        return redirect("login/")
+        return redirect("/login/")
     else:
-        return render_template("home.html",height = 400, title = 'OPS - Home',username = ", " + session['username'],session = session)
+        return redirect("/tags")
 
+
+@website.route("/tags/")
+def tag_list():
+    post_dic = reader.make_postdic("data/posts/posts.csv")
+    tag_list = reader.make_taglist(post_dic)
+    return render_template("tags.html",tags = tag_list)
+    
 ##############LOGIN AND ACCOUNTS#################
 
 @website.route( '/login/')
@@ -37,14 +44,14 @@ def logout():
 def result():
     user_list = reader.make_dic(reader.read_file("data/users/user_auth.csv"))
     #print "BEFORE: " + str(user_list)
-    user_list = checker.reformat(user_list)
+    #user_list = checker.reformat(user_list)
     #print "AFTER: " + str(user_list)
     rf = request.form
     user = rf["txt_user"]
     pw = rf["txt_password"]
     if user == "" or pw == "":
         return render_template("login.html",error = "Both elements must be filled!")
-    elif user in user_list.keys() and user_list[user] == pw:
+    elif user in user_list.keys() and user_list[user][0] == pw:
         session['username'] = user
         main_user = user
         return redirect("/")
@@ -73,7 +80,7 @@ def registered():
     elif user in user_list.keys():
         return render_template("register.html",error = "Username already exists.",session = session)
     else:
-        reader.write_file("data/users/user_auth.csv",user + "," + pw + "\n")
+        reader.write_file("data/users/user_auth.csv",user + "," + pw +  "," + "\n")
         return redirect("/")
     
     return render_template("register.html",error = "",session = session)
@@ -88,8 +95,20 @@ def account(usr):
         return render_template("error.html",error = "The username you have provided does not exist.")
     return render_template("account.html",user = usr,user_list = user_list)
 
+@website.route('/account/change_profile_img',methods = ["POST"])
+def account_change_profile_img():
+    directory = "data/users/user_auth.csv"
+    url = request.form["image"]
+    text = reader.read_file(directory)
+    index = text[text.find(session['username']):].find("\n")
+    i = 0
+    while(text[index - i] != ","): #From the end of the user line, it goes down until it finds a comma.
+        i+=1
+    text = text[(index-i):] + url + text[:(index)]
+    reader.replace_file(directory,text)
+    return redirect("/")
 ##################end of USER STUFF###############################
-@website.route('/about')
+@website.route('/about/')
 def about():
     return render_template("about.html")
 
@@ -109,7 +128,7 @@ def post():
 def post_content():
     post_dir = "data/posts/posts.csv"
     rf = request.form
-    reader.write_file(post_dir,rf["title"] + "<,>"+ session["username"] + "<,>" + str(rf["tags"].split(",")) + "<,>" + rf["content"] + "<,>" + "\<end>\n")
+    reader.write_file(post_dir,rf["title"] + "<,>"+ session["username"] + "<,>" + str(rf["tags"].split(",")) + "<,>" + rf["content"] + "<,>" + rf["images"] + "," + "<,>" + "\<end>\n")
     return redirect("/post")
 
 
@@ -117,9 +136,12 @@ def post_content():
 def post_by_tag(tag):
     post_dic = reader.make_postdic("data/posts/posts.csv")
     tags = reader.get_post_by_tag(post_dic,tag)
+    
+    #print "TAGS: " + str(tags)
     post_dic_tags = []
     for i in tags:
-        post_dic_tags.append(post_dic[tags[i]])
+        #print "POST_TAGS: " + str(tags[i])
+        post_dic_tags.append(post_dic[i])
     return render_template("post.html",dic = post_dic_tags,tags = reader.get_tags(post_dic_tags),message = "Posts by tag: " + tag)
 
 
@@ -162,6 +184,12 @@ def post_reply(index):
     return redirect("/post")
 ###################end of POSTING AND REPLYING#############################
 
+
+
+##########ERROR SITE #######################
+@website.route('/<error>')
+def error_page(error):
+    return render_template("error.html",error =  error + " does not exist on the site.")
 
 if __name__=="__main__":
     

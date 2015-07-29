@@ -13,7 +13,7 @@ def make_dic(s):#For Usernames and Passwords
     result = {}
     for i in range(len(q)-1):
         w = q[i].split(",")
-        result[w[0]] = w[1]
+        result[w[0]] = [w[1],w[2]]
     return result
 
     
@@ -28,20 +28,33 @@ def make_postdic(s):
         w = q[i].split("<,>")
 
         #print "w[3] = " + str(w[3])
-        reply_list = w[3].split("{{,}}")[:-1] #Ignores last one.
+        reply_list = w[4].split("{{,}}")[:-1] #Ignores last one.
         for i in range(len(reply_list)):
             reply_list[i] = reply_list[i].split("{,}") #This seperates comment and user.
+        image_list = w[3].split(",")
+        print "POTATO " + str(image_list)
         #print "POTATOES " + str(reply_list)
         #result[i] = {"title":w[0],"user":w[1],"tags":tag_list,"content":w[2],"replies":reply_list}
-        result.append( {"title":w[0],"user":w[1],"tags":tag_list,"content":w[2],"replies":reply_list} )
+        result.append( {"title":w[0],"user":w[1],"tags":tag_list,"content":w[2],"images":image_list,"replies":reply_list} )
     #print "RESULT: " + str(result)
     return result
+
+
+def make_taglist(s):
+    result = []
+    tag_list = get_tags(s)
+    for i in tag_list:
+        for j in i:
+            if not (j in result) and j != "":
+                result.append(str(j))
+    return result
+
 
 def get_tags(s):
     result = []
     tag_list = []
     for i in range(len(s)):
-        result.append([])
+        #result.append([])
         q = s[i]["tags"]
         tag_list = q[ q.find("[u"):q.find("']")+2 ]
         tag_list = tag_list.replace("u'","")
@@ -52,7 +65,8 @@ def get_tags(s):
         tag_list = tag_list.replace(" ","")
         tag_list = tag_list.split(",")
         #print "Potato: " + str(tag_list)
-        result[i] = (tag_list)
+        result.append(tag_list)
+        #result[i] = (tag_list)
     return result
 
 def get_post_by_tag(posts,tag):

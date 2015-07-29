@@ -61,6 +61,7 @@ h1,h2,h3,h4{
 }
 
 #body{
+ min-height: 200px;
  background-color: #A182A4;
  color: #160600;
  width: 80%;
@@ -78,11 +79,14 @@ h1,h2,h3,h4{
  background-color: #924F7C;
  color: #000000;
  width: 90%;
+ height: 100%;
  margin-left: auto;
  margin-right: auto;
  /*text-align: center;*/
 }
 #footer{
+ position:absolute;
+ bottom:0;
  background-color: #160600;
  color: #946846;
  width: 90%;
@@ -118,6 +122,12 @@ h1,h2,h3,h4{
 }
 
 .resizedField {/*width: 300px; height: 200px; padding:10px 0;*/}
+
+img{
+ max-width:200px;
+ max-height:200px;
+}
+
 
 .navlink{
  

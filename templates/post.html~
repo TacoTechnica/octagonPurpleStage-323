@@ -7,9 +7,10 @@
   <form action = "/post/post" method = "POST">
   
    Title: <br><input type = "text" name = "title" > <br>
-   Contents:<br> <textarea name="content" style="width:250px;height:150px;"></textarea> <br>
+   Contents:<br> <textarea name="content" style="width:300px;height:150px;"></textarea><br> 
+   Images (Separate by Commas): <br><textarea name = "images" style= "width:300px;height:16px;"></textarea> 
    <br>
-   Tags (Separate by Commas): <br><input type = "text" name = "tags" > <br>
+   Tags (Separate by Commas): <br><input type = "text" name = "tags" style= "width:300px;" > <br>
    
    <br>
    <input type = "submit" value = "Post!" > 
@@ -26,7 +27,12 @@
     <i>by <a href = "/post/user/{{dic[dic|length-i - 1]['user']}}"> {{dic[dic|length-i - 1]["user"]}} </a> </i></center>
 
     <div id = "post_text">
-     {{dic[dic|length-i - 1]["content"]}}
+     {{dic[dic|length-i - 1]["content"]}} <br>
+     {%if not dic[dic|length-i - 1]["images"][0] is "" %}
+      {%for j in dic[dic|length-i - 1]["images"] %}
+       <img src= {{j}} >
+      {%endfor%}
+     {%endif%}
     </div>
     <b>Tags: </b><i>
     {% for j in range(tags[dic|length-i - 1]|length) %}
@@ -43,7 +49,7 @@
      {% endfor %}
     
 
-    <form action = "/post/reply/{{dic|length-i - 1}}" method = "POST">
+    <form action = "/post/reply/{{dic|length-i - 1}}#post{{i}}" method = "POST">
      <textarea name = "reply" style="width:200px;height:60px;"></textarea>
      <input type = "submit" value = "Reply" >
     </form>
