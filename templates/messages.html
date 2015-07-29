@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{%block content%}
+{%set title = "Login"%}
+ <h2> Messages </h2>
+ <br>
+ <h3><i> Write a message </i></h3>
+<form action = "/messages/send" method = "POST">
+   User: <input type = "text" name = "user" > <br>
+   Message:<br> <textarea name="content" style="width:300px;height:150px;"></textarea><br> 
+   Images (Separate by Commas): <br><textarea name = "images" style= "width:300px;height:16px;"></textarea> 
+   <br>
+   <br>
+   <input type = "submit" value = "Send" > 
+  </form>
+ <h3> Messages: </h3><br><br>
+ {% for i in range(messages|length) %}
+  
+  <i>from <a href = "/account/{{messages[(messages|length) - i - 1]['sender']}}">{{messages[(messages|length) - i - 1]["sender"]}}</a></i> : <br>
+  <div id = "message_body">
+   {{messages[(messages|length) - i - 1]["content"]}}
+  </div> 
+ <br><br>
+ {%endfor%}
+{%endblock%}
