@@ -59,6 +59,7 @@ h1,h2,h3,h4{
  width: 10%
  background-color:#bcab47;
  text-align: right;
+ color: #FFDDFF;
  float: left;
 }
 
@@ -87,11 +88,13 @@ h1,h2,h3,h4{
  /*text-align: center;*/
 }
 #footer{
- /*position:absolute;
- bottom:0;*/
- background-color: #160600;
+ position:relative;
+ bottom:0;
+ /*display: table-cell;
+ vertical-align: bottom;*/
+ background-color: #190650;
  color: #946846;
- width: 90%;
+ width: 100%;
  margin-left: auto;
  margin-right: auto;
  /*text-align: center;*/
@@ -126,6 +129,8 @@ h1,h2,h3,h4{
 #message_body{
  padding: 8px;
  background-color: #AAC9C8;
+ min-height: 75px;
+ width: 500px;
 }
 
 .resizedField {/*width: 300px; height: 200px; padding:10px 0;*/}

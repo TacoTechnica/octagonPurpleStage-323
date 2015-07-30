@@ -3,11 +3,13 @@
 {%set title = "Login"%}
    <h2>{{user}}'s Profile</h2>
 
-  {% if session['username'] == user %}
+  {% if globe['session']['username'] == user %}
    <form action = "/account/change_profile_img" method = "POST">
     <br><input type = "text" name = "image" >
     <input type = "submit" value = "Change Profile Image" > 
    </form>
   {%endif%}
+
+  <a href = "/post/{{user}}"><i><h3>Posts by {{user}}:</h3></i> </a>
 
 {%endblock%}

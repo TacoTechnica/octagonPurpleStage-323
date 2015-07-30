@@ -11,7 +11,13 @@
     <h1> <img src="../static/img/logo.png" alt="OPS" style="width:48px;height:48px;"> Octagon Purple Stage</h1>
     <a class="button" href="/tags">Tags</a>
     <a class="button" href="/post">Posts</a>
-    <a class="button" href="/messages">Messages</a>
+    
+    {% if globe["unread_number"] == 0 %}
+     <a class="button" href="/messages">Messages</a>
+    {%else%}
+     <a class="button" href="/messages">Messages (<b>{{globe["unread_number"]}}</b>)</a>
+    {%endif%}
+    
     <a class="button" href="/about">About</a>
    </div>
 
@@ -19,7 +25,7 @@
       {% if 'username' in session: %}
        {{session["username"]}}<br>
 
-       <b><a class="navlink" href="/account/{{session["username"]}}">Account</a></b> <br>
+       <b><a class="navlink" href="/account/{{globe['session']['username']}}">Account</a></b> <br>
        <b><a class="navlink" href="/logout/">Log out</a></b>
       {% else %}
        <b><a class="navlink" href="/login/">Login</a></b>
@@ -34,11 +40,12 @@
    <div id="body" style="height: {{height}}px;">
     {% block content %}
     {% endblock %}
+    <div id="base">
+     <br><br><br><i>Copyright 2015-NaN &copy; Team Capsum. We will sue.</i><br><br>
+    </div>
    </div>
   
-   <div id="base">
-    <br><br><br><i>Copyright 2015-NaN &copy; Team Capsum. We will sue.</i><br><br>
-   </div>
+  
   </div>
  </body>
 </html>

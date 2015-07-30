@@ -105,11 +105,11 @@ def get_message_by_user(user,messages):
             result.append(i)
     return result
 
-def get_unread_count(messages):
+def get_unread_count(user,messages):
     messages = make_messagelist(messages)
     result = 0
     for i in messages:
-        if i['read'] == "False":
+        if i['user'] == user and i['read'] == "False":
             result+=1
     return result
 
